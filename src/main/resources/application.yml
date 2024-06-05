@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: spring-data-r2dbc
+  r2dbc:
+    url: r2dbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username:  ${DB_USERNAME}
+    password: ${DB_PWD}
+    repositories:
+        enabled: true
+
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: ['env', 'health', 'info']
