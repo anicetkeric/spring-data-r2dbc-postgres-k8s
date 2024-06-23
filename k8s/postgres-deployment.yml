@@ -40,11 +40,11 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 1Gi # PV and PVC needs to match
+    storage: 1Gi # PV and PVC need to match
   accessModes:
-    - ReadWriteOnce # PV and PVC needs to match
+    - ReadWriteOnce # PV and PVC need to match
   hostPath:
-    path: "/mnt/data" # Usage of hostPath is not recommended in production
+    path: "/mnt/data" # Usage of hostPath is not recommended in production (for single node testing only)
 ---
 # Define a 'Persistent Volume Claim'(PVC) for Postgres Storage, dynamically provisioned by cluster
 apiVersion: v1
@@ -59,7 +59,7 @@ spec:
     - ReadWriteOnce   #This specifies the mode of the claim that we are trying to create.
   resources:
     requests:
-      storage: 1Gi    #This will tell kubernetes about the amount of space we are trying to claim.
+      storage: 1Gi    #This will tell Kubernetes about the amount of space we are trying to claim.
 
 ---
 apiVersion: apps/v1
